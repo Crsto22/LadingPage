@@ -1,0 +1,21 @@
+
+> landing-page@0.0.1 dev
+> astro dev --host 0.0.0.0
+
+[vite] connected.
+[2m23:01:58[22m [34m[types][39m Generated [2m2ms[22m
+[2m23:01:58[22m [34m[vite][39m Re-optimizing dependencies because vite config has changed
+[42m[1m astro [22m[49m [32mv6.1.10[39m [2mready in[22m 2052 [2mms[22m
+[2m┃[22m Local    [36mhttp://localhost:4321/[39m
+[2m┃[22m Network  [36mhttp://192.168.0.106:4321/[39m
+[2m23:01:58[22m [32mwatching for file changes...[39m
+[2m23:02:03[22m [34m[200][39m / [2m104ms[22m
+[2m23:02:06[22m [34m[200][39m / [2m90ms[22m
+[2m23:02:20[22m [34m[200][39m / [2m117ms[22m
+[2m23:02:24[22m [34m[200][39m / [2m99ms[22m
+[2m23:02:46[22m [34m[200][39m / [2m81ms[22m
+[2m23:03:08[22m [34m[200][39m / [2m46ms[22m
+[2m23:03:10[22m [34m[200][39m / [2m103ms[22m
+[2m23:03:12[22m [34m[200][39m / [2m162ms[22m
+[2m23:03:15[22m [34m[200][39m / [2m74ms[22m
+[2m23:03:16[22m [34m[200][39m / [2m135ms[22m

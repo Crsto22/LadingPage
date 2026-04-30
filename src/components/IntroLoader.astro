@@ -1,0 +1,88 @@
+---
+import loaderVideo from '../videos/loader.mp4';
+---
+
+<section class="intro-loader" id="intro-loader" aria-label="Inicio Integridad Democratica">
+	<div class="intro-loader__card">
+		<div class="intro-loader__video-shell">
+			<video
+				class="intro-loader__video"
+				id="intro-loader-video"
+				src={loaderVideo}
+				autoplay
+				muted
+				playsinline
+				preload="auto"
+			></video>
+		</div>
+		<div class="intro-loader__line" aria-hidden="true">
+			<span></span>
+		</div>
+	</div>
+</section>
+
+<script is:inline>
+	(() => {
+		const loader = document.getElementById('intro-loader');
+		const video = document.getElementById('intro-loader-video');
+
+		if (!loader) return;
+
+		const root = document.documentElement;
+		let finished = false;
+		let minimumTimePassed = false;
+		let mediaFinished = false;
+
+		root.classList.add('intro-is-active');
+
+		const closeLoader = () => {
+			if (finished || !minimumTimePassed || !mediaFinished) return;
+
+			finished = true;
+			loader.dataset.state = 'leaving';
+			root.classList.remove('intro-is-active');
+
+			window.setTimeout(() => {
+				loader.remove();
+			}, 700);
+		};
+
+		window.setTimeout(() => {
+			minimumTimePassed = true;
+			closeLoader();
+		}, 1400);
+
+		window.setTimeout(() => {
+			mediaFinished = true;
+			closeLoader();
+		}, 5200);
+
+		if (video) {
+			video.playbackRate = 2;
+			video.defaultPlaybackRate = 2;
+
+			video.play?.().catch(() => {
+				mediaFinished = true;
+				closeLoader();
+			});
+
+			video.addEventListener(
+				'ended',
+				() => {
+					mediaFinished = true;
+					closeLoader();
+				},
+				{ once: true }
+			);
+
+			video.addEventListener(
+				'error',
+				() => {
+					mediaFinished = true;
+					closeLoader();
+				},
+				{ once: true }
+			);
+		}
+	})();
+</script>
