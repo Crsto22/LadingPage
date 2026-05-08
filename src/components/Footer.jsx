@@ -13,11 +13,11 @@ import fondo from '../img/fondofooter.png';
 import logo from '../img/integridadlogoh.webp';
 
 const navItems = [
-	'Nosotros',
-	'Liderazgo',
-	'\u00d3rganos aut\u00f3nomos',
-	'Documentos',
-	'Noticias',
+	{ label: 'Nosotros', href: '/' },
+	{ label: 'Liderazgo', href: '/' },
+	{ label: '\u00d3rganos aut\u00f3nomos', href: '/' },
+	{ label: 'Documentos', href: '/documentos' },
+	{ label: 'Noticias', href: '/' },
 ];
 
 const socialLinks = [
@@ -65,14 +65,14 @@ export default function Footer() {
 
 					<nav aria-label="Footer" className="grid gap-3">
 						<p className="text-xs font-black uppercase tracking-[0.22em] text-[#b8ddff]">Explora</p>
-						{navItems.map((item) => (
+						{navItems.map(({ label, href }) => (
 							<a
 								className="group flex w-fit items-center gap-3 text-[clamp(16px,1.2vw,19px)] font-black text-white/92 transition hover:text-white"
-								href="/"
-								key={item}
+								href={href}
+								key={label}
 							>
 								<span className="h-px w-5 bg-white/38 transition group-hover:w-8 group-hover:bg-white" />
-								{item}
+								{label}
 							</a>
 						))}
 					</nav>

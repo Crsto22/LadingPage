@@ -1,0 +1,73 @@
+---
+import Navbar from "../components/Navbar.jsx";
+import Footer from "../components/Footer.jsx";
+import ResourceCenter from "../components/ResourceCenter.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout>
+	<Navbar />
+
+	<!-- Banner Documentos -->
+	<section class="documentos-banner" id="documentos-banner">
+		<!-- La imagen de fondo se coloca manualmente aquí como background-image en el style o como <img> -->
+		<div class="documentos-banner__overlay"></div>
+		<div class="documentos-banner__content">
+			<h1 class="documentos-banner__title">Documentos</h1>
+		</div>
+	</section>
+
+	<!-- Centro de Recursos -->
+	<main id="documentos-main">
+		<ResourceCenter />
+	</main>
+
+	<Footer />
+</Layout>
+
+<style>
+	.documentos-banner {
+		position: relative;
+		width: 100%;
+		height: clamp(180px, 22vw, 280px);
+		background-color: #003580;
+		background-image: url("../img/banner22.png");
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+	}
+
+	.documentos-banner__overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			135deg,
+			rgba(0, 30, 80, 0.72) 0%,
+			rgba(0, 53, 128, 0.55) 50%,
+			rgba(0, 30, 80, 0.72) 100%
+		);
+		z-index: 1;
+	}
+
+	.documentos-banner__content {
+		position: relative;
+		z-index: 2;
+		text-align: center;
+		padding-inline: clamp(16px, 4vw, 48px);
+	}
+
+	.documentos-banner__title {
+		font-family: "Proxima Nova", Arial, sans-serif;
+		font-size: clamp(28px, 3.6vw, 52px);
+		font-weight: 800;
+		color: #f7ffff;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		margin: 0;
+		text-shadow: 0 4px 18px rgba(0, 16, 54, 0.32);
+	}
+</style>

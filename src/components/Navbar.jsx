@@ -14,7 +14,7 @@ const navItems = [
 	{ label: 'NOSOTROS', href: '/' },
 	{ label: 'LIDERAZGO', href: '/' },
 	{ label: '\u00D3RGANOS AUT\u00D3NOMOS', href: '/' },
-	{ label: 'DOCUMENTOS', href: '/' },
+	{ label: 'DOCUMENTOS', href: '/documentos' },
 	{ label: 'NOTICIAS', href: '/' },
 ];
 

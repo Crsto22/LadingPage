@@ -1,0 +1,232 @@
+---
+import logoSrc from '../img/logo.webp';
+
+const comunicados = [
+  { id: "com-1", titulo: "Comunicado sobre reformas electorales 2026", fecha: "05 May 2026", archivo: "/docs/comunicado-reformas-2026.pdf" },
+  { id: "com-2", titulo: "Pronunciamiento ante la coyuntura nacional", fecha: "28 Abr 2026", archivo: "/docs/pronunciamiento-coyuntura.pdf" },
+  { id: "com-3", titulo: "Convocatoria a Asamblea General Extraordinaria", fecha: "15 Abr 2026", archivo: "/docs/convocatoria-asamblea.pdf" },
+  { id: "com-4", titulo: "Nota de prensa: alianza por la transparencia", fecha: "02 Abr 2026", archivo: "/docs/nota-alianza-transparencia.pdf" },
+  { id: "com-5", titulo: "Resolución del Tribunal de Ética Partidaria", fecha: "20 Mar 2026", archivo: "/docs/resolucion-tribunal-etica.pdf" },
+  { id: "com-6", titulo: "Declaración sobre resultados electorales internos", fecha: "10 Mar 2026", archivo: "/docs/declaracion-resultados.pdf" },
+];
+
+const documentos = [
+  { id: "doc-1", titulo: "Estatuto del Partido – Versión vigente 2026", fecha: "01 Ene 2026", archivo: "/docs/estatuto-2026.pdf" },
+  { id: "doc-2", titulo: "Reglamento de Organización Interna", fecha: "15 Dic 2025", archivo: "/docs/reglamento-organizacion.pdf" },
+  { id: "doc-3", titulo: "Plan de Gobierno Nacional 2026–2031", fecha: "01 Nov 2025", archivo: "/docs/plan-gobierno-2026.pdf" },
+  { id: "doc-4", titulo: "Ideario y Declaración de Principios", fecha: "20 Oct 2025", archivo: "/docs/ideario-principios.pdf" },
+  { id: "doc-5", titulo: "Código de Ética y Conducta Partidaria", fecha: "05 Sep 2025", archivo: "/docs/codigo-etica.pdf" },
+  { id: "doc-6", titulo: "Informe Financiero Anual 2025", fecha: "30 Jun 2025", archivo: "/docs/informe-financiero-2025.pdf" },
+  { id: "doc-7", titulo: "Reglamento Electoral Interno", fecha: "15 May 2025", archivo: "/docs/reglamento-electoral.pdf" },
+  { id: "doc-8", titulo: "Acta de Fundación del Partido", fecha: "01 Mar 2025", archivo: "/docs/acta-fundacion.pdf" },
+];
+
+const identidad = [
+  { id: "id-1", titulo: "Logotipo Principal", descripcion: "Versión completa a color sobre fondo claro", preview: "/img/logo-preview.png", formatos: [{ label: "PNG", href: "/brand/logo-principal.png" }, { label: "SVG", href: "/brand/logo-principal.svg" }, { label: "PDF", href: "/brand/logo-principal.pdf" }] },
+  { id: "id-2", titulo: "Logotipo – Versión Blanca", descripcion: "Para uso sobre fondos oscuros o fotografías", preview: "/img/logo-blanco-preview.png", formatos: [{ label: "PNG", href: "/brand/logo-blanco.png" }, { label: "SVG", href: "/brand/logo-blanco.svg" }] },
+  { id: "id-3", titulo: "Isotipo", descripcion: "Símbolo aislado para íconos y redes sociales", preview: "/img/isotipo-preview.png", formatos: [{ label: "PNG", href: "/brand/isotipo.png" }, { label: "SVG", href: "/brand/isotipo.svg" }] },
+  { id: "id-4", titulo: "Manual de Marca", descripcion: "Guía completa de uso visual e identidad corporativa", preview: "/img/manual-marca-preview.png", formatos: [{ label: "PDF", href: "/brand/manual-de-marca.pdf" }] },
+  { id: "id-5", titulo: "Paleta de Colores", descripcion: "Colores primarios, secundarios y de acento", preview: "/img/paleta-preview.png", formatos: [{ label: "PDF", href: "/brand/paleta-colores.pdf" }, { label: "PNG", href: "/brand/paleta-colores.png" }] },
+  { id: "id-6", titulo: "Tipografía Institucional", descripcion: "Familia tipográfica oficial y sus variantes", preview: "/img/tipografia-preview.png", formatos: [{ label: "ZIP", href: "/brand/tipografia.zip" }, { label: "PDF", href: "/brand/tipografia-guia.pdf" }] },
+];
+---
+
+<section class="w-full bg-surface font-primary" id="resource-center">
+  <!-- Tabs -->
+  <div class="border-b border-primary/12 bg-white/80 backdrop-blur-sm sticky top-0 z-30">
+    <div class="mx-auto max-w-[1540px] px-[clamp(18px,5vw,84px)]">
+      <nav class="flex gap-1 -mb-px overflow-x-auto" id="rc-tabs">
+        {[
+          { key: "comunicados", label: "Comunicados", icon: "M11 5.882V19.24a1.76 1.76 0 0 1-3.417.592l-2.147-6.15M18 13a3 3 0 1 0 0-6M5.436 13.683A4.001 4.001 0 0 1 3 9.765V9a4 4 0 0 1 4-4h3.28a1 1 0 0 1 .948.684l1.789 5.367" },
+          { key: "documentos", label: "Documentos", icon: "M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" },
+          { key: "identidad", label: "Identidad Gráfica", icon: "M9.53 16.122a3 3 0 0 0-5.78 1.128 2.25 2.25 0 0 1-2.4 2.245 4.5 4.5 0 0 0 8.4-2.245c0-.399-.078-.78-.22-1.128Zm0 0a15.998 15.998 0 0 0 3.388-1.62m-5.043-.025a15.994 15.994 0 0 1 1.622-3.395m3.42 3.42a15.995 15.995 0 0 0 4.764-4.648l3.876-5.814a1.151 1.151 0 0 0-1.597-1.597L14.146 6.32a15.996 15.996 0 0 0-4.649 4.763m3.42 3.42a6.776 6.776 0 0 0-3.42-3.42" },
+        ].map((tab) => (
+          <button
+            data-tab={tab.key}
+            class="rc-tab group relative flex items-center gap-2 px-6 py-4 text-[13px] font-extrabold uppercase tracking-[0.06em] text-muted transition-all duration-300 hover:text-primary whitespace-nowrap cursor-pointer rounded-t-2xl"
+            type="button"
+          >
+            <svg class="w-[18px] h-[18px] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d={tab.icon} />
+            </svg>
+            {tab.label}
+            <span class="rc-tab__bar absolute bottom-0 left-3 right-3 h-[3px] bg-primary rounded-full scale-x-0 transition-transform duration-300 origin-center"></span>
+          </button>
+        ))}
+      </nav>
+    </div>
+  </div>
+
+  <!-- Panels -->
+  <div class="mx-auto max-w-[1540px] px-[clamp(18px,5vw,84px)] py-[clamp(32px,5vw,56px)]">
+
+    <!-- Comunicados -->
+    <div data-panel="comunicados" class="rc-panel hidden">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-[clamp(20px,2.2vw,28px)] font-black text-primary-dark tracking-[-0.01em]">Comunicados</h2>
+        <span class="text-xs font-bold text-muted uppercase tracking-[0.12em]">{comunicados.length} publicaciones</span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        {comunicados.map((item) => (
+          <article class="rc-card group relative flex flex-col bg-white rounded-2xl border border-primary/10 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:bg-primary hover:border-primary hover:shadow-[0_16px_40px_rgba(0,73,164,0.28)] cursor-pointer" id={item.id} data-archivo={item.archivo}>
+            <div class="flex-1 p-5">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="shrink-0 w-10 h-10 rounded-xl bg-primary/[0.06] group-hover:bg-white/15 flex items-center justify-center transition-colors duration-300">
+                  <img src={logoSrc.src} alt="" class="w-6 h-6 object-contain" loading="lazy" />
+                </div>
+                <span class="inline-block text-[10px] font-black uppercase tracking-[0.16em] text-primary bg-primary/[0.06] group-hover:text-white group-hover:bg-white/15 px-2.5 py-1 rounded-full mt-1 transition-colors duration-300">Comunicado</span>
+              </div>
+              <h3 class="text-[15px] font-bold text-body leading-snug mb-2 group-hover:text-white transition-colors duration-300 line-clamp-3">{item.titulo}</h3>
+              <p class="text-xs text-muted font-semibold group-hover:text-white/70 transition-colors duration-300">{item.fecha}</p>
+            </div>
+            <div class="flex items-center border-t border-primary/8 group-hover:border-white/20 px-5 py-3 gap-3 transition-colors duration-300">
+              <a href={item.archivo} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-extrabold text-primary group-hover:text-white transition-colors duration-300">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
+                Ver
+              </a>
+              <span class="w-px h-4 bg-primary/12 group-hover:bg-white/25 transition-colors duration-300"></span>
+              <a href={item.archivo} download class="inline-flex items-center gap-1.5 text-xs font-extrabold text-muted group-hover:text-white/80 transition-colors duration-300">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+                Descargar
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <!-- Documentos -->
+    <div data-panel="documentos" class="rc-panel hidden">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-[clamp(20px,2.2vw,28px)] font-black text-primary-dark tracking-[-0.01em]">Documentos</h2>
+        <span class="text-xs font-bold text-muted uppercase tracking-[0.12em]">{documentos.length} archivos</span>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        {documentos.map((item) => (
+          <article class="rc-card group relative flex flex-col bg-white rounded-2xl border border-primary/10 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:bg-primary hover:border-primary hover:shadow-[0_16px_40px_rgba(0,73,164,0.28)] cursor-pointer" id={item.id} data-archivo={item.archivo}>
+            <div class="flex-1 p-5">
+              <div class="flex items-start gap-3 mb-4">
+                <div class="shrink-0 w-10 h-10 rounded-xl bg-primary/[0.06] group-hover:bg-white/15 flex items-center justify-center transition-colors duration-300">
+                  <img src={logoSrc.src} alt="" class="w-6 h-6 object-contain" loading="lazy" />
+                </div>
+                <span class="inline-block text-[10px] font-black uppercase tracking-[0.16em] text-primary bg-primary/[0.06] group-hover:text-white group-hover:bg-white/15 px-2.5 py-1 rounded-full mt-1 transition-colors duration-300">Documento</span>
+              </div>
+              <h3 class="text-[15px] font-bold text-body leading-snug mb-2 group-hover:text-white transition-colors duration-300 line-clamp-3">{item.titulo}</h3>
+              <p class="text-xs text-muted font-semibold group-hover:text-white/70 transition-colors duration-300">{item.fecha}</p>
+            </div>
+            <div class="flex items-center border-t border-primary/8 group-hover:border-white/20 px-5 py-3 gap-3 transition-colors duration-300">
+              <a href={item.archivo} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-extrabold text-primary group-hover:text-white transition-colors duration-300">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 0 1 0-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178Z" /><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" /></svg>
+                Ver
+              </a>
+              <span class="w-px h-4 bg-primary/12 group-hover:bg-white/25 transition-colors duration-300"></span>
+              <a href={item.archivo} download class="inline-flex items-center gap-1.5 text-xs font-extrabold text-muted group-hover:text-white/80 transition-colors duration-300">
+                <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+                Descargar
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <!-- Identidad Gráfica -->
+    <div data-panel="identidad" class="rc-panel hidden">
+      <div class="flex items-center justify-between mb-8">
+        <h2 class="text-[clamp(20px,2.2vw,28px)] font-black text-primary-dark tracking-[-0.01em]">Identidad Gráfica</h2>
+        <span class="text-xs font-bold text-muted uppercase tracking-[0.12em]">{identidad.length} recursos</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {identidad.map((item) => (
+          <article class="rc-card group relative flex flex-col bg-white rounded-2xl border border-primary/10 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:bg-primary hover:border-primary hover:shadow-[0_16px_40px_rgba(0,73,164,0.28)]" id={item.id}>
+            <div class="relative bg-gradient-to-br from-surface to-white border-b border-primary/8 group-hover:border-white/20 flex items-center justify-center h-44 overflow-hidden transition-colors duration-300">
+              <div class="absolute inset-0 opacity-[0.04]" style="background-image: radial-gradient(circle, rgba(0,73,164,0.3) 1px, transparent 1px); background-size: 18px 18px;"></div>
+              <img src={item.preview} alt={item.titulo} class="relative max-h-28 max-w-[80%] object-contain transition-transform duration-500 group-hover:scale-110" loading="lazy" />
+            </div>
+            <div class="flex-1 p-5">
+              <h3 class="text-[15px] font-bold text-body leading-snug mb-1 group-hover:text-white transition-colors duration-300">{item.titulo}</h3>
+              <p class="text-xs text-muted font-medium leading-relaxed group-hover:text-white/70 transition-colors duration-300">{item.descripcion}</p>
+            </div>
+            <div class="flex items-center flex-wrap gap-2 border-t border-primary/8 group-hover:border-white/20 px-5 py-3 transition-colors duration-300">
+              {item.formatos.map((fmt) => (
+                <a href={fmt.href} download class="inline-flex items-center gap-1 text-[11px] font-extrabold uppercase tracking-[0.08em] text-primary bg-primary/[0.06] group-hover:text-white group-hover:bg-white/15 hover:!bg-white hover:!text-primary px-3 py-1.5 rounded-full transition-all duration-300">
+                  <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg>
+                  {fmt.label}
+                </a>
+              ))}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script is:inline>
+(() => {
+  const tabs = document.querySelectorAll('.rc-tab');
+  const panels = document.querySelectorAll('.rc-panel');
+  const cards = document.querySelectorAll('.rc-card');
+  let activeCard = null;
+
+  function activate(tabName) {
+    tabs.forEach((tab) => {
+      const isActive = tab.dataset.tab === tabName;
+      const bar = tab.querySelector('.rc-tab__bar');
+      tab.classList.toggle('text-primary', isActive);
+      tab.classList.toggle('text-muted', !isActive);
+      bar.style.transform = isActive ? 'scaleX(1)' : 'scaleX(0)';
+    });
+    panels.forEach((panel) => {
+      if (panel.dataset.panel === tabName) {
+        panel.classList.remove('hidden');
+        panel.style.animation = 'rcFadeIn 350ms cubic-bezier(0.22,1,0.36,1) both';
+      } else {
+        panel.classList.add('hidden');
+        panel.style.animation = '';
+      }
+    });
+    if (activeCard) { activeCard.classList.remove('rc-card--active'); activeCard = null; }
+  }
+
+  tabs.forEach((tab) => tab.addEventListener('click', () => activate(tab.dataset.tab)));
+
+  /* Card click-to-select */
+  cards.forEach((card) => {
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return;
+      if (activeCard) activeCard.classList.remove('rc-card--active');
+      if (activeCard === card) { activeCard = null; return; }
+      card.classList.add('rc-card--active');
+      activeCard = card;
+    });
+  });
+
+  activate('comunicados');
+})();
+</script>
+
+<style is:global>
+  @keyframes rcFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .rc-card--active {
+    border-color: #0049A4 !important;
+    background: #0049A4 !important;
+    box-shadow: 0 16px 40px rgba(0, 73, 164, 0.28) !important;
+    transform: translateY(-4px);
+  }
+  .rc-card--active * {
+    color: white !important;
+    border-color: rgba(255,255,255,0.2) !important;
+    transition: all 300ms ease;
+  }
+  .rc-card--active div[class*="bg-primary"] {
+    background: rgba(255,255,255,0.15) !important;
+  }
+  .rc-card--active span[class*="bg-primary"] {
+    background: rgba(255,255,255,0.15) !important;
+  }
+</style>
