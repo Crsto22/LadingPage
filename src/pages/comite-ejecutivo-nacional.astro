@@ -1,0 +1,79 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.jsx";
+import Footer from "../components/Footer.jsx";
+import ComiteEjecutivoNacional from "../components/ComiteEjecutivoNacional.jsx";
+---
+
+<Layout title="Comité Ejecutivo Nacional | Integridad Democrática">
+	<Navbar />
+
+	<!-- Banner Comité Ejecutivo Nacional -->
+	<section class="comite-banner" id="comite-banner">
+		<div class="comite-banner__overlay"></div>
+		<div class="comite-banner__content">
+			<h1 class="comite-banner__title">Comité Ejecutivo Nacional</h1>
+		</div>
+	</section>
+
+	<main id="comite-main">
+		<ComiteEjecutivoNacional client:load />
+	</main>
+
+	<Footer />
+</Layout>
+
+<style>
+	.comite-banner {
+		position: relative;
+		width: 100%;
+		height: clamp(180px, 22vw, 280px);
+		background-color: #003580;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+	}
+
+	.comite-banner::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background-image: url("../img/principiosimg.webp");
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		opacity: 0.35;
+		z-index: 0;
+	}
+
+	.comite-banner__overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			135deg,
+			rgba(0, 30, 80, 0.55) 0%,
+			rgba(0, 53, 128, 0.40) 50%,
+			rgba(0, 30, 80, 0.55) 100%
+		);
+		z-index: 1;
+	}
+
+	.comite-banner__content {
+		position: relative;
+		z-index: 2;
+		text-align: center;
+		padding-inline: clamp(16px, 4vw, 48px);
+	}
+
+	.comite-banner__title {
+		font-family: "Proxima Nova", Arial, sans-serif;
+		font-size: clamp(28px, 3.6vw, 52px);
+		font-weight: 800;
+		color: #f7ffff;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		margin: 0;
+		text-shadow: 0 4px 18px rgba(0, 16, 54, 0.32);
+	}
+</style>

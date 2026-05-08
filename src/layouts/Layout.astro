@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import IntroLoader from '../components/IntroLoader.astro';
 ---
 
 <!doctype html>
@@ -12,6 +13,7 @@ import '../styles/global.css';
 		<title>Landing Page</title>
 	</head>
 	<body>
+		<IntroLoader />
 		<slot />
 		<script is:inline>
 			(() => {

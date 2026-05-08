@@ -10,9 +10,15 @@ import {
 import { BO, CN, GB, PE } from 'country-flag-icons/react/3x2';
 import logo from '../img/integridadlogoh.webp';
 
+const leadershipItems = [
+	{ label: 'Comité Ejecutivo Nacional', href: '/comite-ejecutivo-nacional' },
+	{ label: 'Líderes Regionales', href: '/' },
+	{ label: 'Consejo Consultivo', href: '/' },
+];
+
 const navItems = [
 	{ label: 'NOSOTROS', href: '/' },
-	{ label: 'LIDERAZGO', href: '/' },
+	{ label: 'LIDERAZGO', href: '/comite-ejecutivo-nacional', hasDropdown: true },
 	{ label: '\u00D3RGANOS AUT\u00D3NOMOS', href: '/' },
 	{ label: 'DOCUMENTOS', href: '/documentos' },
 	{ label: 'NOTICIAS', href: '/' },
@@ -159,11 +165,40 @@ export default function Navbar() {
 				</a>
 
 				<div className={navShellClass}>
-					{navItems.map((item) => (
+				{navItems.map((item) => (
+					item.hasDropdown ? (
+						<div className="group relative" key={item.label}>
+							<a className={navLinkClass} href={item.href}>
+								{item.label}
+								<svg
+									aria-hidden="true"
+									className="ml-1 size-3 fill-current transition group-hover:rotate-180"
+									viewBox="0 0 16 16"
+								>
+									<path d="M4.2 6.2 8 10l3.8-3.8 1.2 1.2-5 5-5-5 1.2-1.2Z" />
+								</svg>
+							</a>
+
+							<div className="absolute top-full right-0 left-0 h-4" />
+							<div className="invisible absolute top-[calc(100%+12px)] left-1/2 z-50 w-[220px] -translate-x-1/2 translate-y-2 rounded-[18px] border border-primary/10 bg-surface p-2 opacity-0 shadow-[0_22px_42px_rgba(0,43,99,0.24)] transition duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+								<div className="absolute -top-2 left-1/2 size-4 -translate-x-1/2 rotate-45 border-t border-l border-primary/10 bg-surface" />
+								{leadershipItems.map((subItem) => (
+									<a
+										className="relative z-10 flex min-h-10 items-center rounded-xl px-3 text-[15px] font-semibold text-primary transition hover:bg-primary hover:text-surface"
+										href={subItem.href}
+										key={subItem.label}
+									>
+										{subItem.label}
+									</a>
+								))}
+							</div>
+						</div>
+					) : (
 						<a className={navLinkClass} href={item.href} key={item.label}>
 							{item.label}
 						</a>
-					))}
+					)
+				))}
 
 					<div className="group relative">
 						<a className={joinButtonClass} href="/">

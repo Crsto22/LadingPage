@@ -28,6 +28,11 @@ import loaderVideo from '../videos/loader.mp4';
 
 		if (!loader) return;
 
+		if (sessionStorage.getItem('loader-shown')) {
+			loader.remove();
+			return;
+		}
+
 		const root = document.documentElement;
 		let finished = false;
 		let minimumTimePassed = false;
@@ -39,6 +44,7 @@ import loaderVideo from '../videos/loader.mp4';
 			if (finished || !minimumTimePassed || !mediaFinished) return;
 
 			finished = true;
+			sessionStorage.setItem('loader-shown', '1');
 			loader.dataset.state = 'leaving';
 			root.classList.remove('intro-is-active');
 
