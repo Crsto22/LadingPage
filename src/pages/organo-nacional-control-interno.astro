@@ -2,29 +2,29 @@
 import Layout from "../layouts/Layout.astro";
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
-import ComiteEjecutivoNacional from "../components/comite-ejecutivo-nacional/ComiteEjecutivoNacional.jsx";
+import OrganoNacionalControlInterno from "../components/organo-nacional-control-interno/OrganoNacionalControlInterno.jsx";
 ---
 
-<Layout title="Comité Ejecutivo Nacional | Integridad Democrática">
+<Layout title="Órgano Nacional de Control Interno | Integridad Democrática">
 	<Navbar />
 
-	<!-- Banner Comité Ejecutivo Nacional -->
-	<section class="comite-banner" id="comite-banner">
-		<div class="comite-banner__overlay"></div>
-		<div class="comite-banner__content">
-			<h1 class="comite-banner__title">Comité Ejecutivo Nacional</h1>
+	<!-- Banner Órgano Nacional de Control Interno -->
+	<section class="tribunal-banner" id="tribunal-banner">
+		<div class="tribunal-banner__overlay"></div>
+		<div class="tribunal-banner__content">
+			<h1 class="tribunal-banner__title">Órgano Nacional de Control Interno</h1>
 		</div>
 	</section>
 
-	<main id="comite-main">
-		<ComiteEjecutivoNacional client:load />
+	<main id="tribunal-main">
+		<OrganoNacionalControlInterno client:load />
 	</main>
 
 	<Footer />
 </Layout>
 
 <style>
-	.comite-banner {
+	.tribunal-banner {
 		position: relative;
 		width: 100%;
 		height: clamp(180px, 22vw, 280px);
@@ -35,7 +35,7 @@ import ComiteEjecutivoNacional from "../components/comite-ejecutivo-nacional/Com
 		overflow: hidden;
 	}
 
-	.comite-banner::before {
+	.tribunal-banner::before {
 		content: "";
 		position: absolute;
 		inset: 0;
@@ -47,7 +47,7 @@ import ComiteEjecutivoNacional from "../components/comite-ejecutivo-nacional/Com
 		z-index: 0;
 	}
 
-	.comite-banner__overlay {
+	.tribunal-banner__overlay {
 		position: absolute;
 		inset: 0;
 		background: linear-gradient(
@@ -59,14 +59,14 @@ import ComiteEjecutivoNacional from "../components/comite-ejecutivo-nacional/Com
 		z-index: 1;
 	}
 
-	.comite-banner__content {
+	.tribunal-banner__content {
 		position: relative;
 		z-index: 2;
 		text-align: center;
 		padding-inline: clamp(16px, 4vw, 48px);
 	}
 
-	.comite-banner__title {
+	.tribunal-banner__title {
 		font-family: "Proxima Nova", Arial, sans-serif;
 		font-size: clamp(28px, 3.6vw, 52px);
 		font-weight: 800;

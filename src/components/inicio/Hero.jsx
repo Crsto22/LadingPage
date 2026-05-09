@@ -1,4 +1,4 @@
-import heroVideo from '../videos/home.mp4';
+import heroVideo from '../../videos/home.mp4';
 
 export default function Hero() {
 	const videoSrc = typeof heroVideo === 'string' ? heroVideo : heroVideo.src;

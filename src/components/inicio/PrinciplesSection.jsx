@@ -1,6 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion';
-import fondo from '../img/fondo1.png';
-import principlesImage from '../img/principiosimg.webp';
+import fondo from '../../img/fondo1.png';
+import principlesImage from '../../img/principiosimg.webp';
 
 const principles = [
 	{

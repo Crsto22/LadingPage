@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import image1 from '../img/image1.png';
-import image2 from '../img/image2.png';
-import fondo from '../img/fondo.png';
+import image1 from '../../img/image1.png';
+import image2 from '../../img/image2.png';
+import fondo from '../../img/fondo.png';
 import { motion } from 'framer-motion';
 
 const textVariants = {

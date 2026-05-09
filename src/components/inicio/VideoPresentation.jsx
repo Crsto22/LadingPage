@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import fondo from '../img/fondo3.png';
+import fondo from '../../img/fondo3.png';
 
 const videoVariants = {
 	hidden: { opacity: 0, y: 58, scale: 0.96 },

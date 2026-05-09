@@ -1,16 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import wolfImg from '../img/comite-ejecutivo-nacional/wolf.png';
-import berthaImg from '../img/comite-ejecutivo-nacional/bertha-cecilia.png';
-import rosaImg from '../img/comite-ejecutivo-nacional/rosa-cecilia.png';
-import diegoImg from '../img/comite-ejecutivo-nacional/diego-jesus.png';
-import janetImg from '../img/comite-ejecutivo-nacional/janet-rosario.png';
-import anaImg from '../img/comite-ejecutivo-nacional/ana-franzua.png';
-import fernandoImg from '../img/comite-ejecutivo-nacional/fernando-daniel.png';
-import jenrryImg from '../img/comite-ejecutivo-nacional/Jenrry.png';
-import cleverImg from '../img/comite-ejecutivo-nacional/clever-rosado.png';
-import marioImg from '../img/comite-ejecutivo-nacional/mario-letellier.png';
-import fondo from '../img/fondo5.png';
+import wolfImg from '../../img/comite-ejecutivo-nacional/wolf.png';
+import berthaImg from '../../img/comite-ejecutivo-nacional/bertha-cecilia.png';
+import rosaImg from '../../img/comite-ejecutivo-nacional/rosa-cecilia.png';
+import diegoImg from '../../img/comite-ejecutivo-nacional/diego-jesus.png';
+import janetImg from '../../img/comite-ejecutivo-nacional/janet-rosario.png';
+import anaImg from '../../img/comite-ejecutivo-nacional/ana-franzua.png';
+import fernandoImg from '../../img/comite-ejecutivo-nacional/fernando-daniel.png';
+import jenrryImg from '../../img/comite-ejecutivo-nacional/Jenrry.png';
+import cleverImg from '../../img/comite-ejecutivo-nacional/clever-rosado.png';
+import marioImg from '../../img/comite-ejecutivo-nacional/mario-letellier.png';
+import fondo from '../../img/fondo5.png';
 
 const members = [
 	{

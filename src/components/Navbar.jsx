@@ -12,8 +12,10 @@ import logo from '../img/integridadlogoh.webp';
 
 const leadershipItems = [
 	{ label: 'Comité Ejecutivo Nacional', href: '/comite-ejecutivo-nacional' },
-	{ label: 'Líderes Regionales', href: '/' },
-	{ label: 'Consejo Consultivo', href: '/' },
+	{ label: 'Tribunal Electoral Nacional', href: '/tribunal-electoral-nacional' },
+	{ label: 'Tribunal Electoral de Ética y Disciplina', href: '/tribunal-electoral-etica-disciplina' },
+	{ label: 'Órgano Nacional de Control Interno', href: '/organo-nacional-control-interno' },
+	{ label: 'Comando de Campaña Nacional', href: '/comando-campana-nacional' },
 ];
 
 const navItems = [
