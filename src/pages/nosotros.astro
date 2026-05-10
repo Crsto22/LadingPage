@@ -1,0 +1,77 @@
+---
+import Navbar from "../components/Navbar.jsx";
+import Footer from "../components/Footer.jsx";
+import Layout from "../layouts/Layout.astro";
+import NosotrosContent from "../components/nosotros/NosotrosContent.jsx";
+import PrinciplesSection from "../components/inicio/PrinciplesSection.jsx";
+import ImageGallery from "../components/nosotros/ImageGallery.jsx";
+---
+
+<Layout title="Nosotros - Integridad Democrática">
+	<Navbar />
+
+	<!-- Banner Nosotros -->
+	<section class="nosotros-banner" id="nosotros-banner">
+		<!-- La imagen de fondo se coloca en el CSS o inline si se desea -->
+		<div class="nosotros-banner__overlay"></div>
+		<div class="nosotros-banner__content">
+			<h1 class="nosotros-banner__title">Nosotros</h1>
+		</div>
+	</section>
+
+	<main id="nosotros-main">
+		<NosotrosContent client:load />
+		<PrinciplesSection client:load />
+		<ImageGallery client:load />
+	</main>
+
+	<Footer />
+</Layout>
+
+<style>
+	.nosotros-banner {
+		position: relative;
+		width: 100%;
+		height: clamp(180px, 22vw, 280px);
+		background-color: #003580;
+		/* Imagen de fondo del banner, el usuario puede cambiarla */
+		background-image: url("../img/banner22.png");
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		overflow: hidden;
+	}
+
+	.nosotros-banner__overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			135deg,
+			rgba(0, 30, 80, 0.72) 0%,
+			rgba(0, 53, 128, 0.55) 50%,
+			rgba(0, 30, 80, 0.72) 100%
+		);
+		z-index: 1;
+	}
+
+	.nosotros-banner__content {
+		position: relative;
+		z-index: 2;
+		text-align: center;
+		padding-inline: clamp(16px, 4vw, 48px);
+	}
+
+	.nosotros-banner__title {
+		font-family: "Proxima Nova", Arial, sans-serif;
+		font-size: clamp(28px, 3.6vw, 52px);
+		font-weight: 800;
+		color: #f7ffff;
+		letter-spacing: 0.04em;
+		text-transform: uppercase;
+		margin: 0;
+		text-shadow: 0 4px 18px rgba(0, 16, 54, 0.32);
+	}
+</style>

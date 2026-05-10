@@ -19,7 +19,7 @@ const leadershipItems = [
 ];
 
 const navItems = [
-	{ label: 'NOSOTROS', href: '/' },
+	{ label: 'NOSOTROS', href: '/nosotros' },
 	{ label: 'LIDERAZGO', href: '/comite-ejecutivo-nacional', hasDropdown: true },
 	{ label: '\u00D3RGANOS AUT\u00D3NOMOS', href: '/' },
 	{ label: 'DOCUMENTOS', href: '/documentos' },
