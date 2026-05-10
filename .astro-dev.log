@@ -1,21 +1,43 @@
 
 > landing-page@0.0.1 dev
-> astro dev --host 0.0.0.0
+> astro dev --host 127.0.0.1
 
 [vite] connected.
-[2m23:01:58[22m [34m[types][39m Generated [2m2ms[22m
-[2m23:01:58[22m [34m[vite][39m Re-optimizing dependencies because vite config has changed
-[42m[1m astro [22m[49m [32mv6.1.10[39m [2mready in[22m 2052 [2mms[22m
-[2m┃[22m Local    [36mhttp://localhost:4321/[39m
-[2m┃[22m Network  [36mhttp://192.168.0.106:4321/[39m
-[2m23:01:58[22m [32mwatching for file changes...[39m
-[2m23:02:03[22m [34m[200][39m / [2m104ms[22m
-[2m23:02:06[22m [34m[200][39m / [2m90ms[22m
-[2m23:02:20[22m [34m[200][39m / [2m117ms[22m
-[2m23:02:24[22m [34m[200][39m / [2m99ms[22m
-[2m23:02:46[22m [34m[200][39m / [2m81ms[22m
-[2m23:03:08[22m [34m[200][39m / [2m46ms[22m
-[2m23:03:10[22m [34m[200][39m / [2m103ms[22m
-[2m23:03:12[22m [34m[200][39m / [2m162ms[22m
-[2m23:03:15[22m [34m[200][39m / [2m74ms[22m
-[2m23:03:16[22m [34m[200][39m / [2m135ms[22m
+[2m22:49:21[22m [34m[types][39m Generated [2m1ms[22m
+[2m22:49:21[22m [34m[vite][39m Re-optimizing dependencies because vite config has changed
+[42m[1m astro [22m[49m [32mv6.1.10[39m [2mready in[22m 1900 [2mms[22m
+[2m┃[22m Local    [36mhttp://127.0.0.1:4321/[39m
+[2m22:49:21[22m [32mwatching for file changes...[39m
+[2m22:49:32[22m [34m[200][39m /noticias [2m197ms[22m
+[2m22:49:33[22m [34m[200][39m /noticias [2m64ms[22m
+[2m22:49:36[22m [34m[200][39m /noticias [2m45ms[22m
+[2m22:49:45[22m [34m[200][39m /noticias [2m24ms[22m
+[2m22:49:45[22m [34m[200][39m /noticias [2m20ms[22m
+[2m22:50:58[22m [34m[watch][39m /src/styles/global.css
+[2m22:51:10[22m [34m[watch][39m /src/components/noticias/NoticiasGrid.css, /src/styles/global.css
+[2m22:51:20[22m [34m[watch][39m /src/components/noticias/NoticiasGrid.css, /src/styles/global.css
+[2m22:51:23[22m [34m[watch][39m /src/components/noticias/NoticiasGrid.css, /src/styles/global.css
+[2m22:51:24[22m [34m[watch][39m /src/components/noticias/NoticiasGrid.css, /src/styles/global.css
+[2m22:51:30[22m [34m[watch][39m /src/components/noticias/NoticiasGrid.css, /src/styles/global.css
+[2m22:51:41[22m [34m[watch][39m /src/styles/global.css
+[2m22:51:49[22m [34m[watch][39m /src/styles/global.css
+[2m22:53:23[22m [34m[watch][39m /src/styles/global.css
+[2m22:53:38[22m [34m[watch][39m /src/styles/global.css
+[2m22:53:50[22m [34m[watch][39m /src/pages/noticias.astro?astro&type=style&index=0&lang.css, /src/styles/global.css
+[2m22:54:08[22m [34m[watch][39m /src/pages/noticias.astro?astro&type=style&index=0&lang.css, /src/styles/global.css
+[2m22:54:27[22m [34m[watch][39m /src/styles/global.css
+[2m22:54:30[22m [34m[watch][39m /src/components/noticias/NoticiasGrid.css, /src/styles/global.css
+[2m22:55:07[22m [34m[watch][39m /src/styles/global.css
+[2m22:55:13[22m [34m[200][39m /noticias [2m112ms[22m
+[2m22:55:16[22m [34m[watch][39m /src/styles/global.css
+[2m22:55:18[22m [34m[watch][39m /src/styles/global.css
+[2m22:55:26[22m [34m[watch][39m /src/styles/global.css
+[2m22:55:40[22m [34m[watch][39m /src/styles/global.css
+[2m22:55:51[22m [34m[watch][39m /src/styles/global.css
+[2m22:56:41[22m [34m[watch][39m /src/styles/global.css
+[2m22:58:43[22m [34m[watch][39m /src/pages/noticias.astro?astro&type=style&index=0&lang.css, /src/styles/global.css
+[2m22:58:47[22m [34m[watch][39m /src/styles/global.css
+[2m22:59:17[22m [34m[watch][39m /src/styles/global.css
+[2m22:59:48[22m [34m[200][39m /noticias [2m122ms[22m
+[2m23:03:54[22m [34m[watch][39m /src/styles/global.css
+[2m23:04:20[22m [34m[watch][39m /src/styles/global.css

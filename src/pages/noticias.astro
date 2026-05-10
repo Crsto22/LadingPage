@@ -1,0 +1,83 @@
+---
+import Navbar from "../components/Navbar.jsx";
+import Footer from "../components/Footer.jsx";
+import Layout from "../layouts/Layout.astro";
+import NoticiasGrid from "../components/noticias/NoticiasGrid.jsx";
+
+import fondoNoticias from "../img/fondo1.png";
+import img1 from "../img/noticias/noticiap1.webp";
+import img3 from "../img/noticias/noticiap3.webp";
+import img4 from "../img/noticias/noticiap4.webp";
+import img5 from "../img/noticias/noticiap5.webp";
+import img6 from "../img/noticias/noticiap6.webp";
+
+const noticias = [
+	{
+		id: 1,
+		fecha: "Setiembre 02, 2025",
+		titulo: "Evento Lanzamiento de Campaña",
+		imagen: img1.src,
+	},
+	{
+		id: 2,
+		fecha: "Abril 16, 2025",
+		titulo: "Conferencia en el Amazonas",
+		imagen: img3.src,
+	},
+	{
+		id: 3,
+		fecha: "Marzo 09, 2025",
+		titulo: "Instalación de Comités Provinciales",
+		imagen: img4.src,
+	},
+	{
+		id: 4,
+		fecha: "Setiembre 02, 2025",
+		titulo: "Wolfgang Grozo en Islay: El Perú necesita un cambio real",
+		imagen: img5.src,
+	},
+	{
+		id: 5,
+		fecha: "Marzo 09, 2025",
+		titulo: "Integridad Democrática llega a Piura: Compromiso con las regiones",
+		imagen: img6.src,
+	},
+	{
+		id: 6,
+		fecha: "Marzo 09, 2025",
+		titulo: "Integridad Democrática rompe alianza con Peruanos Unidos",
+		imagen: img1.src,
+	},
+];
+---
+
+<Layout title="Noticias - Integridad Democrática">
+	<Navbar />
+
+	<section
+		id="noticias-banner"
+		class="relative flex h-[clamp(180px,22vw,280px)] w-full items-center justify-center overflow-hidden bg-[#003580]"
+	>
+		<div class="absolute inset-0 z-0 bg-[linear-gradient(135deg,rgba(0,30,80,0.55)_0%,rgba(0,53,128,0.40)_50%,rgba(0,30,80,0.55)_100%)]"></div>
+		<div class="relative z-10 px-[clamp(16px,4vw,48px)] text-center">
+			<h1 class="m-0 font-primary text-[clamp(28px,3.6vw,52px)] font-extrabold uppercase tracking-[0.04em] text-[#f7ffff] drop-shadow-[0_4px_18px_rgba(0,16,54,0.32)]">
+				Noticias
+			</h1>
+		</div>
+	</section>
+
+	<main id="noticias-main" class="relative overflow-hidden">
+		<img
+			class="absolute inset-0 h-full w-full object-cover object-center"
+			src={fondoNoticias.src}
+			alt=""
+			aria-hidden="true"
+		/>
+		<div class="absolute inset-0 bg-white/75"></div>
+		<div class="relative z-10">
+			<NoticiasGrid client:visible noticias={noticias} />
+		</div>
+	</main>
+
+	<Footer />
+</Layout>

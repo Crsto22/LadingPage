@@ -23,7 +23,7 @@ const navItems = [
 	{ label: 'LIDERAZGO', href: '/comite-ejecutivo-nacional', hasDropdown: true },
 	{ label: '\u00D3RGANOS AUT\u00D3NOMOS', href: '/' },
 	{ label: 'DOCUMENTOS', href: '/documentos' },
-	{ label: 'NOTICIAS', href: '/' },
+	{ label: 'NOTICIAS', href: '/noticias' },
 ];
 
 const joinItems = [
