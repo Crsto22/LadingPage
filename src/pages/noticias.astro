@@ -15,44 +15,56 @@ const noticias = [
 	{
 		id: 1,
 		fecha: "Setiembre 02, 2025",
+		fechaKey: "news.date.1",
 		titulo: "Evento Lanzamiento de Campaña",
+		titleKey: "news.title.1",
 		imagen: img1.src,
 	},
 	{
 		id: 2,
 		fecha: "Abril 16, 2025",
+		fechaKey: "news.date.2",
 		titulo: "Conferencia en el Amazonas",
+		titleKey: "news.title.2",
 		imagen: img3.src,
 	},
 	{
 		id: 3,
 		fecha: "Marzo 09, 2025",
+		fechaKey: "news.date.3",
 		titulo: "Instalación de Comités Provinciales",
+		titleKey: "news.title.3",
 		imagen: img4.src,
 	},
 	{
 		id: 4,
 		fecha: "Setiembre 02, 2025",
+		fechaKey: "news.date.1",
 		titulo: "Wolfgang Grozo en Islay: El Perú necesita un cambio real",
+		titleKey: "news.title.4",
 		imagen: img5.src,
 	},
 	{
 		id: 5,
 		fecha: "Marzo 09, 2025",
+		fechaKey: "news.date.3",
 		titulo: "Integridad Democrática llega a Piura: Compromiso con las regiones",
+		titleKey: "news.title.5",
 		imagen: img6.src,
 	},
 	{
 		id: 6,
 		fecha: "Marzo 09, 2025",
+		fechaKey: "news.date.3",
 		titulo: "Integridad Democrática rompe alianza con Peruanos Unidos",
+		titleKey: "news.title.6",
 		imagen: img1.src,
 	},
 ];
 ---
 
 <Layout title="Noticias - Integridad Democrática">
-	<Navbar />
+	<Navbar client:load />
 
 	<section
 		id="noticias-banner"
@@ -61,7 +73,7 @@ const noticias = [
 		<div class="absolute inset-0 z-0 bg-[linear-gradient(135deg,rgba(0,30,80,0.55)_0%,rgba(0,53,128,0.40)_50%,rgba(0,30,80,0.55)_100%)]"></div>
 		<div class="relative z-10 px-[clamp(16px,4vw,48px)] text-center">
 			<h1 class="m-0 font-primary text-[clamp(28px,3.6vw,52px)] font-extrabold uppercase tracking-[0.04em] text-[#f7ffff] drop-shadow-[0_4px_18px_rgba(0,16,54,0.32)]">
-				Noticias
+				<span data-i18n="news.banner">Noticias</span>
 			</h1>
 		</div>
 	</section>

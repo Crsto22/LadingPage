@@ -13,11 +13,11 @@ import fondo from '../img/fondofooter.png';
 import logo from '../img/integridadlogoh.webp';
 
 const navItems = [
-	{ label: 'Nosotros', href: '/' },
-	{ label: 'Liderazgo', href: '/' },
-	{ label: '\u00d3rganos aut\u00f3nomos', href: '/' },
-	{ label: 'Documentos', href: '/documentos' },
-	{ label: 'Noticias', href: '/' },
+	{ label: 'Nosotros', labelKey: 'nav.about', href: '/nosotros' },
+	{ label: 'Liderazgo', labelKey: 'nav.leadership', href: '/comite-ejecutivo-nacional' },
+	{ label: '\u00d3rganos aut\u00f3nomos', labelKey: 'nav.leadership.control', href: '/organo-nacional-control-interno' },
+	{ label: 'Documentos', labelKey: 'nav.documents', href: '/documentos' },
+	{ label: 'Noticias', labelKey: 'nav.news', href: '/noticias' },
 ];
 
 const socialLinks = [
@@ -50,29 +50,31 @@ export default function Footer() {
 							className="inline-flex rounded-[24px] border border-white/16 bg-white/10 p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.16)] transition hover:-translate-y-1 hover:bg-white/14"
 							href="/"
 							aria-label={'Integridad Democr\u00e1tica'}
+							data-i18n-aria-label="brand.name"
 						>
 							<img
 								className="h-auto w-[min(260px,78vw)] object-contain drop-shadow-[0_8px_18px_rgba(0,16,54,0.32)]"
 								src={logoSrc}
 								alt={'Integridad Democr\u00e1tica'}
+								data-i18n-alt="brand.name"
 							/>
 						</a>
 
-						<p className="mt-6 max-w-sm text-[16px] font-bold leading-7 text-white/90">
+						<p className="mt-6 max-w-sm text-[16px] font-bold leading-7 text-white/90" data-i18n="footer.description">
 							{'Un movimiento ciudadano con vocaci\u00f3n de servicio, liderazgo y compromiso con el bien com\u00fan.'}
 						</p>
 					</div>
 
 					<nav aria-label="Footer" className="grid gap-3">
-						<p className="text-xs font-black uppercase tracking-[0.22em] text-[#b8ddff]">Explora</p>
-						{navItems.map(({ label, href }) => (
+						<p className="text-xs font-black uppercase tracking-[0.22em] text-[#b8ddff]" data-i18n="footer.explore">Explora</p>
+						{navItems.map(({ label, labelKey, href }) => (
 							<a
 								className="group flex w-fit items-center gap-3 text-[clamp(16px,1.2vw,19px)] font-black text-white/92 transition hover:text-white"
 								href={href}
 								key={label}
 							>
 								<span className="h-px w-5 bg-white/38 transition group-hover:w-8 group-hover:bg-white" />
-								{label}
+								<span data-i18n={labelKey}>{label}</span>
 							</a>
 						))}
 					</nav>
@@ -81,6 +83,7 @@ export default function Footer() {
 						<a
 							className="inline-flex min-h-12 items-center justify-center rounded-full bg-white px-6 text-sm font-black uppercase tracking-[0.03em] text-primary shadow-[0_16px_32px_rgba(0,16,54,0.25)] transition hover:-translate-y-0.5 hover:bg-[#eaf5ff]"
 							href="/"
+							data-i18n="home.faq.cta"
 						>
 							{'\u00danete a nosotros'}
 						</a>
@@ -90,7 +93,8 @@ export default function Footer() {
 								<FaLocationDot aria-hidden="true" className="mt-1 size-4 shrink-0 text-[#f0c66b]" />
 								<span>
 									<span className="block text-lg font-black text-white">
-										{'Ub\u00edcanos aqu\u00ed'} <FaArrowRight aria-hidden="true" className="mb-0.5 ml-1 inline size-4" />
+										<span data-i18n="footer.locationTitle">{'Ub\u00edcanos aqu\u00ed'}</span>{' '}
+										<FaArrowRight aria-hidden="true" className="mb-0.5 ml-1 inline size-4" />
 									</span>
 									Calle Las Tiendas 269, interior K, Surquillo
 								</span>
@@ -120,8 +124,8 @@ export default function Footer() {
 				<div className="mt-[clamp(34px,5vw,62px)] flex flex-wrap items-center justify-between gap-4 border-t border-white/18 pt-6 text-sm font-bold text-white/72">
 					<p>{'\u00a9 2026 Integridad Democr\u00e1tica'}</p>
 					<div className="flex flex-wrap gap-x-5 gap-y-2">
-						<a className="transition hover:text-white" href="/">{'Pol\u00edtica de privacidad'}</a>
-						<a className="transition hover:text-white" href="/">{'T\u00e9rminos'}</a>
+						<a className="transition hover:text-white" href="/" data-i18n="footer.privacy">{'Pol\u00edtica de privacidad'}</a>
+						<a className="transition hover:text-white" href="/" data-i18n="footer.terms">{'T\u00e9rminos'}</a>
 					</div>
 				</div>
 			</div>

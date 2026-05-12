@@ -11,66 +11,67 @@ import jenrryImg from '../../img/comite-ejecutivo-nacional/Jenrry.png';
 import cleverImg from '../../img/comite-ejecutivo-nacional/clever-rosado.png';
 import marioImg from '../../img/comite-ejecutivo-nacional/mario-letellier.png';
 import fondo from '../../img/fondo5.png';
+import { useLanguage } from '../../i18n/useLanguage.js';
 
 const members = [
 	{
 		name: 'Wolfgang Mario',
 		lastName: 'Grozo Costa',
-		role: 'Presidente Fundador',
+		roleKey: 'role.founderPresident',
 		image: wolfImg,
 	},
 	{
 		name: 'Bertha Cecilia',
 		lastName: 'Azabache Miranda',
-		role: 'Secretaría General Nacional',
+		roleKey: 'role.generalSecretary',
 		image: berthaImg,
 	},
 	{
 		name: 'Rosa Cecilia',
 		lastName: 'Rugel Parrales',
-		role: 'Secretaría Nacional de la Mujer y Familia',
+		roleKey: 'role.womenFamily',
 		image: rosaImg,
 	},
 	{
 		name: 'Diego Jesús',
 		lastName: 'Pajares Andonayre',
-		role: 'Secretaría Nacional de Pymes y Mypes',
+		roleKey: 'role.pymes',
 		image: diegoImg,
 	},
 	{
 		name: 'Janet Rosario',
 		lastName: 'Márquez Letona',
-		role: 'Secretaría Nacional de Gremios y Organizaciones Sociales',
+		roleKey: 'role.socialOrganizations',
 		image: janetImg,
 	},
 	{
 		name: 'Ana Franzua',
 		lastName: 'Rugel Oyola',
-		role: 'Secretaría Nacional de Planeamiento',
+		roleKey: 'role.planning',
 		image: anaImg,
 	},
 	{
 		name: 'Fernando Daniel',
 		lastName: 'Fasanando Rodríguez',
-		role: 'Secretaría Nacional de Organización',
+		roleKey: 'role.organization',
 		image: fernandoImg,
 	},
 	{
 		name: 'Jenry',
 		lastName: 'Salazar Garces',
-		role: 'Secretaría Nacional de Capacitación y Formación',
+		roleKey: 'role.training',
 		image: jenrryImg,
 	},
 	{
 		name: 'Clever',
 		lastName: 'Rosado Cadillo',
-		role: 'Secretaría General de Finanzas',
+		roleKey: 'role.finance',
 		image: cleverImg,
 	},
 	{
 		name: 'Mario',
 		lastName: 'Letellier Castro',
-		role: 'Secretaría Nacional de Políticas y Plan de Gobierno',
+		roleKey: 'role.policyPlan',
 		image: marioImg,
 	},
 ];
@@ -101,7 +102,7 @@ const imageVariants = {
 	},
 };
 
-function MemberImage({ member, size = 'normal' }) {
+function MemberImage({ member, size = 'normal', t }) {
 	const imgSrc = typeof member.image === 'string' ? member.image : member.image.src;
 	const isLarge = size === 'large';
 	const imgSize = isLarge ? 'h-80 w-80' : 'h-72 w-72';
@@ -135,7 +136,7 @@ function MemberImage({ member, size = 'normal' }) {
 				</p>
 				<div className={`mt-2.5 h-px ${lineW} bg-gradient-to-r from-transparent via-primary/40 to-transparent`} />
 				<p className={`mt-2.5 ${roleSize} font-semibold leading-snug text-muted`}>
-					{member.role}
+					{t(member.roleKey)}
 				</p>
 			</div>
 		</motion.div>
@@ -143,6 +144,7 @@ function MemberImage({ member, size = 'normal' }) {
 }
 
 export default function ComiteEjecutivoNacional() {
+	const { t } = useLanguage();
 	const backgroundSrc = typeof fondo === 'string' ? fondo : fondo.src;
 
 	return (
@@ -163,7 +165,7 @@ export default function ComiteEjecutivoNacional() {
 					whileInView="visible"
 					viewport={{ once: true, amount: 0.2 }}
 				>
-					<MemberImage member={president} size="large" />
+					<MemberImage member={president} size="large" t={t} />
 				</motion.div>
 
 				<motion.div
@@ -174,7 +176,7 @@ export default function ComiteEjecutivoNacional() {
 					viewport={{ once: true, amount: 0.1 }}
 				>
 					{rest.map((member) => (
-						<MemberImage key={member.lastName} member={member} />
+						<MemberImage key={member.lastName} member={member} t={t} />
 					))}
 				</motion.div>
 			</div>

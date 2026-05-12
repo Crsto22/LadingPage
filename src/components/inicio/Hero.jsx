@@ -7,8 +7,9 @@ export default function Hero() {
 		<section
 			className="relative isolate -mt-px overflow-hidden bg-primary"
 			aria-label="Video principal de Integridad Democr\u00e1tica"
+			data-i18n-aria-label="home.hero.aria"
 		>
-			<div className="relative mx-auto aspect-[16/6.55] w-full overflow-hidden bg-primary max-lg:aspect-[16/8] max-sm:aspect-[4/3]">
+			<div className="relative mx-auto aspect-[16/6.55] w-full overflow-hidden bg-primary max-lg:aspect-[16/8] max-sm:aspect-[10/9]">
 				<video
 					className="absolute inset-0 z-0 size-full object-cover object-center"
 					src={videoSrc}

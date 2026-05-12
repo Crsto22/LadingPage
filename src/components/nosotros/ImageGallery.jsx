@@ -11,6 +11,7 @@ import img7 from '../../img/galeria-7.jpg';
 import img8 from '../../img/galeria-8.jpg';
 import img9 from '../../img/galeria-9.jpg';
 import fondo from '../../img/fondo.png';
+import { useLanguage } from '../../i18n/useLanguage.js';
 
 // Arreglo de imágenes para la galería. 
 // El usuario puede agregar más rutas o cambiarlas fácilmente aquí.
@@ -19,6 +20,7 @@ const galeriaImagenes = [
 ];
 
 export default function ImageGallery() {
+    const { t } = useLanguage();
     const [selectedImage, setSelectedImage] = useState(null);
     const getImgSrc = (img) => typeof img === 'string' ? img : img?.src;
 
@@ -58,10 +60,10 @@ export default function ImageGallery() {
             <div className="mx-auto max-w-[1400px] relative z-10">
                 <div className="text-center mb-[clamp(40px,5vw,72px)]">
                     <h2 className="text-[clamp(36px,5vw,56px)] font-black leading-[1.1] text-primary mb-4">
-                        Nuestra <span className="text-accent">Galería</span>
+                        {t('about.gallery.headingA')} <span className="text-accent">{t('about.gallery.headingB')}</span>
                     </h2>
                     <p className="text-[clamp(16px,1.2vw,20px)] text-muted max-w-2xl mx-auto font-medium">
-                        Un recorrido visual por nuestros momentos más destacados y nuestro compromiso en acción junto a los ciudadanos.
+                        {t('about.gallery.copy')}
                     </p>
                 </div>
 
@@ -81,7 +83,7 @@ export default function ImageGallery() {
                         >
                             <img 
                                 src={getImgSrc(src)} 
-                                alt={`Galería ${index + 1}`} 
+                                alt={t('about.gallery.alt').replace('{count}', index + 1)} 
                                 className="w-full h-full object-cover transition-transform duration-[800ms] group-hover:scale-110"
                                 onError={(e) => {
                                     // Imagen de respaldo por si el usuario aún no sube las suyas
@@ -118,7 +120,7 @@ export default function ImageGallery() {
                         <button 
                             className="absolute top-6 right-6 md:top-10 md:right-10 w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-accent hover:text-white text-white/80 rounded-full transition-all duration-300 z-10"
                             onClick={() => setSelectedImage(null)}
-                            aria-label="Cerrar imagen"
+                            aria-label={t('common.closeImage')}
                         >
                             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" />

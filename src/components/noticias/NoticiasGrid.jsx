@@ -1,5 +1,6 @@
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { useRef } from 'react';
+import { useLanguage } from '../../i18n/useLanguage.js';
 
 const headerVariants = {
 	hidden: { opacity: 0, y: 18 },
@@ -28,6 +29,7 @@ const cardVariants = {
 };
 
 export default function NoticiasGrid({ noticias }) {
+	const { t } = useLanguage();
 	const sectionRef = useRef(null);
 	const shouldReduceMotion = useReducedMotion();
 	const isInView = useInView(sectionRef, { once: true, amount: 0.16 });
@@ -42,7 +44,11 @@ export default function NoticiasGrid({ noticias }) {
 					initial={shouldReduceMotion ? 'visible' : 'hidden'}
 					animate={animateState}
 				>
-					{noticias.map((noticia) => (
+					{noticias.map((noticia) => {
+						const fecha = noticia.fechaKey ? t(noticia.fechaKey) : noticia.fecha;
+						const titulo = noticia.titleKey ? t(noticia.titleKey) : noticia.titulo;
+
+						return (
 						<motion.article
 							key={noticia.id}
 							variants={cardVariants}
@@ -61,7 +67,7 @@ export default function NoticiasGrid({ noticias }) {
 								<motion.img
 									className="block h-full w-full object-cover"
 									src={noticia.imagen}
-									alt={noticia.titulo}
+									alt={titulo}
 									loading="lazy"
 									whileHover={shouldReduceMotion ? undefined : { scale: 1.08 }}
 									transition={{ duration: 0.38, ease: 'easeOut' }}
@@ -71,14 +77,15 @@ export default function NoticiasGrid({ noticias }) {
 
 							<div className="flex min-h-[96px] flex-col gap-2.5 p-5">
 								<time className="font-primary text-[11px] font-extrabold uppercase tracking-[0.08em] !text-[#0049a4] opacity-100 [-webkit-text-fill-color:#0049a4]">
-									{noticia.fecha}
+									{fecha}
 								</time>
 								<h3 className="m-0 font-primary text-[15px] font-extrabold leading-snug !text-[#001e50] opacity-100 [-webkit-text-fill-color:#001e50] transition-colors duration-200 group-hover:!text-[#0049a4] group-hover:[-webkit-text-fill-color:#0049a4]">
-									{noticia.titulo}
+									{titulo}
 								</h3>
 							</div>
 						</motion.article>
-					))}
+						);
+					})}
 				</motion.div>
 			</div>
 		</section>

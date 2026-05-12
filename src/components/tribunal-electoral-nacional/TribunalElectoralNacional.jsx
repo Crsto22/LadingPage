@@ -1,24 +1,25 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import fondo from '../../img/fondo.png';
+import { useLanguage } from '../../i18n/useLanguage.js';
 
 const members = [
 	{
 		name: 'Harold Robinson',
 		lastName: 'Matos Maldonado',
-		role: 'Presidente',
+		roleKey: 'role.president',
 		image: null,
 	},
 	{
 		name: 'Alfredo Alexander',
 		lastName: 'Ferrer Ruiz',
-		role: 'Primer Miembro',
+		roleKey: 'role.firstMember',
 		image: null,
 	},
 	{
 		name: 'Sami Raúl',
 		lastName: 'Fatule Simón',
-		role: 'Segundo Miembro',
+		roleKey: 'role.secondMember',
 		image: null,
 	},
 ];
@@ -46,7 +47,7 @@ const cardVariants = {
 	},
 };
 
-function MemberCard({ member }) {
+function MemberCard({ member, t }) {
 	return (
 		<motion.div
 			className="group relative flex flex-col items-center"
@@ -70,7 +71,7 @@ function MemberCard({ member }) {
 				</p>
 				<div className="mt-2.5 h-px w-10 bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 				<p className="mt-2.5 text-[0.9rem] font-semibold leading-snug text-muted">
-					{member.role}
+					{t(member.roleKey)}
 				</p>
 			</div>
 		</motion.div>
@@ -78,6 +79,7 @@ function MemberCard({ member }) {
 }
 
 export default function TribunalElectoralNacional() {
+	const { t } = useLanguage();
 	const backgroundSrc = typeof fondo === 'string' ? fondo : fondo.src;
 
 	return (
@@ -99,7 +101,7 @@ export default function TribunalElectoralNacional() {
 					viewport={{ once: true, amount: 0.15 }}
 				>
 					{members.map((member) => (
-						<MemberCard key={member.lastName} member={member} />
+						<MemberCard key={member.lastName} member={member} t={t} />
 					))}
 				</motion.div>
 			</div>

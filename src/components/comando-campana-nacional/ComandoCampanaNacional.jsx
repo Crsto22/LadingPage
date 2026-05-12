@@ -2,12 +2,13 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import fondo from '../../img/fondo.png';
 import gardoImg from '../../img/comando-campana-nacional/gardo-antonio.png';
+import { useLanguage } from '../../i18n/useLanguage.js';
 
 const members = [
 	{
 		name: 'Gardo Antonio',
 		lastName: 'Gómez Jiménez',
-		role: 'Jefe Nacional de Campaña',
+		roleKey: 'role.campaignChief',
 		image: gardoImg,
 	},
 ];
@@ -35,7 +36,7 @@ const imageVariants = {
 	},
 };
 
-function MemberImage({ member }) {
+function MemberImage({ member, t }) {
 	const imgSrc = typeof member.image === 'string' ? member.image : member.image.src;
 
 	return (
@@ -61,7 +62,7 @@ function MemberImage({ member }) {
 				</p>
 				<div className="mt-2.5 h-px w-10 bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
 				<p className="mt-2.5 text-[0.9rem] font-semibold leading-snug text-muted">
-					{member.role}
+					{t(member.roleKey)}
 				</p>
 			</div>
 		</motion.div>
@@ -69,6 +70,7 @@ function MemberImage({ member }) {
 }
 
 export default function ComandoCampanaNacional() {
+	const { t } = useLanguage();
 	const backgroundSrc = typeof fondo === 'string' ? fondo : fondo.src;
 
 	return (
@@ -89,7 +91,7 @@ export default function ComandoCampanaNacional() {
 					whileInView="visible"
 					viewport={{ once: true, amount: 0.2 }}
 				>
-					<MemberImage member={members[0]} />
+					<MemberImage member={members[0]} t={t} />
 				</motion.div>
 			</div>
 		</section>

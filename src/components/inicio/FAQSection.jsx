@@ -1,31 +1,27 @@
 import { useState } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { useLanguage } from '../../i18n/useLanguage.js';
 
 const faqItems = [
 	{
-		question: '¿Cómo puedo afiliarme oficialmente a Integridad Democrática?',
-		answer:
-			'Para afiliarte, debes completar el formulario de inscripción disponible en nuestra plataforma digital o acercarte a cualquiera de nuestras sedes regionales con tu DNI vigente. El proceso es gratuito y recibirás una constancia digital de afiliación dentro de las 72 horas siguientes.',
+		questionKey: 'home.faq.q1',
+		answerKey: 'home.faq.a1',
 	},
 	{
-		question: '¿Cuáles son los requisitos para ser personero del partido?',
-		answer:
-			'Los requisitos incluyen: ser afiliado activo con al menos 6 meses de antigüedad, no tener antecedentes penales ni judiciales, completar el curso de formación de personeros (disponible en nuestra Escuela de Liderazgo), y presentar una carta de compromiso ético firmada.',
+		questionKey: 'home.faq.q2',
+		answerKey: 'home.faq.a2',
 	},
 	{
-		question: '¿Qué documentos necesito para postular a cargos internos?',
-		answer:
-			'Necesitarás: copia de tu DNI, constancia de afiliación vigente, declaración jurada de bienes y rentas, plan de trabajo para el cargo al que postulas, y al menos dos cartas de respaldo de otros afiliados activos. Todos los documentos se presentan de forma digital.',
+		questionKey: 'home.faq.q3',
+		answerKey: 'home.faq.a3',
 	},
 	{
-		question: '¿La afiliación al partido tiene algún costo de inscripción?',
-		answer:
-			'No, la afiliación a Integridad Democrática es completamente gratuita. No cobramos cuotas de inscripción ni mensualidades obligatorias. Las contribuciones voluntarias son bienvenidas y se gestionan con total transparencia a través de nuestro portal de rendición de cuentas.',
+		questionKey: 'home.faq.q4',
+		answerKey: 'home.faq.a4',
 	},
 	{
-		question: '¿Cómo puedo participar en las mesas de trabajo regionales?',
-		answer:
-			'Las mesas de trabajo regionales están abiertas a todos los afiliados y simpatizantes. Puedes inscribirte a través de nuestra plataforma web seleccionando tu región y área temática de interés. Las sesiones se realizan de forma presencial y virtual, y se publican en nuestro calendario institucional.',
+		questionKey: 'home.faq.q5',
+		answerKey: 'home.faq.a5',
 	},
 ];
 
@@ -61,7 +57,7 @@ const cardStagger = {
 };
 
 /* ── Accordion item ── */
-function AccordionItem({ item, index, isOpen, onToggle, shouldReduceMotion }) {
+function AccordionItem({ item, index, isOpen, onToggle, shouldReduceMotion, t }) {
 	return (
 		<motion.div
 			custom={index}
@@ -91,14 +87,14 @@ function AccordionItem({ item, index, isOpen, onToggle, shouldReduceMotion }) {
 					id={`faq-trigger-${index}`}
 					aria-expanded={isOpen}
 					aria-controls={`faq-panel-${index}`}
-					className="flex w-full cursor-pointer items-center gap-4 px-6 py-5 text-left sm:px-7 sm:py-[22px]"
+					className="flex w-full cursor-pointer items-center gap-3 px-4 py-4 text-left sm:gap-4 sm:px-7 sm:py-[22px]"
 					onClick={onToggle}
 					type="button"
 				>
 					{/* Number badge — muted blue tones to not compete with heading */}
 					<span
 						className={`
-							flex size-9 shrink-0 items-center justify-center rounded-full
+							flex size-8 shrink-0 items-center justify-center rounded-full sm:size-9
 							text-[12px] font-black tracking-wide transition-colors duration-300
 							${isOpen
 								? 'bg-accent text-white shadow-[0_4px_12px_rgba(40,110,170,0.28)]'
@@ -112,18 +108,18 @@ function AccordionItem({ item, index, isOpen, onToggle, shouldReduceMotion }) {
 					{/* Question text — dark for readability */}
 					<span
 						className={`
-							flex-1 text-[15px] font-bold leading-snug tracking-[-0.01em] transition-colors duration-300
+							flex-1 text-[14px] font-bold leading-snug tracking-normal transition-colors duration-300
 							sm:text-[16px]
 							${isOpen ? 'text-primary-dark' : 'text-body group-hover:text-primary-dark'}
 						`}
 					>
-						{item.question}
+						{t(item.questionKey)}
 					</span>
 
 					{/* Plus/minus icon — muted accent color */}
 					<span
 						className={`
-							relative flex size-8 shrink-0 items-center justify-center rounded-lg
+							relative flex size-8 shrink-0 items-center justify-center rounded-lg max-sm:size-7
 							transition-all duration-300
 							${isOpen
 								? 'bg-accent text-white shadow-[0_3px_10px_rgba(40,110,170,0.25)]'
@@ -159,10 +155,10 @@ function AccordionItem({ item, index, isOpen, onToggle, shouldReduceMotion }) {
 							}}
 							className="overflow-hidden"
 						>
-							<div className="px-6 pb-6 sm:px-7 sm:pb-7">
-								<div className="ml-[52px] border-t border-[#e2e8f0] pt-4">
-									<p className="text-[14px] font-medium leading-[1.7] tracking-[0.005em] text-muted sm:text-[15px]">
-										{item.answer}
+							<div className="px-4 pb-5 sm:px-7 sm:pb-7">
+								<div className="border-t border-[#e2e8f0] pt-4 sm:ml-[52px]">
+									<p className="text-[13px] font-medium leading-[1.65] tracking-normal text-muted sm:text-[15px] sm:tracking-[0.005em]">
+										{t(item.answerKey)}
 									</p>
 								</div>
 							</div>
@@ -176,6 +172,7 @@ function AccordionItem({ item, index, isOpen, onToggle, shouldReduceMotion }) {
 
 /* ── Main FAQ Section ── */
 export default function FAQSection() {
+	const { t } = useLanguage();
 	const [openIndex, setOpenIndex] = useState(0);
 	const shouldReduceMotion = useReducedMotion();
 
@@ -186,11 +183,11 @@ export default function FAQSection() {
 	return (
 		<section
 			id="faq"
-			className="relative bg-white py-[clamp(72px,9vw,130px)]"
+			className="relative bg-white py-[clamp(52px,9vw,130px)]"
 			aria-labelledby="faq-heading"
 		>
 			<motion.div
-				className="relative mx-auto w-full max-w-[1540px] px-[clamp(18px,5vw,84px)]"
+				className="relative mx-auto w-full max-w-[1540px] px-[clamp(16px,5vw,84px)]"
 				variants={sectionVariants}
 				initial="hidden"
 				whileInView="visible"
@@ -199,38 +196,37 @@ export default function FAQSection() {
 				{/* Section kicker */}
 				<motion.div className="mb-3 flex items-center gap-3" variants={fadeUp}>
 					<span className="h-px w-8 bg-primary/30" />
-					<span className="text-[11px] font-black uppercase tracking-[0.22em] text-accent">
-						Soporte & información
+					<span className="text-[10px] font-black uppercase tracking-[0.16em] text-accent sm:text-[11px] sm:tracking-[0.22em]">
+						{t('home.faq.kicker')}
 					</span>
 				</motion.div>
 
 				{/* Two-column layout */}
-				<div className="grid items-start gap-[clamp(40px,6vw,80px)] lg:grid-cols-[minmax(320px,0.85fr)_minmax(400px,1.15fr)]">
+				<div className="grid items-start gap-[clamp(28px,6vw,80px)] lg:grid-cols-[minmax(320px,0.85fr)_minmax(400px,1.15fr)]">
 					{/* ── Left Column: Support & Action ── */}
 					<motion.div className="flex flex-col gap-6" variants={fadeUp}>
 						<h2
 							id="faq-heading"
-							className="text-[clamp(32px,4.2vw,50px)] font-black leading-[1.06] tracking-[-0.02em] text-primary-dark"
+							className="text-[clamp(28px,9vw,50px)] font-black leading-[1.08] tracking-normal text-primary-dark sm:tracking-[-0.02em]"
 						>
-							Preguntas Frecuentes
+							{t('home.faq.titleA')}
 							<br />
-							<span className="text-primary">sobre Integridad Democrática</span>
+							<span className="text-primary">{t('home.faq.titleB')}</span>
 						</h2>
 
-						<p className="max-w-lg text-[16px] font-medium leading-[1.7] tracking-[0.005em] text-muted">
-							Resuelve tus dudas sobre afiliación, participación y el partido.
-							Si no encuentras tu respuesta, contáctanos.
+						<p className="max-w-lg text-[14px] font-medium leading-[1.65] tracking-normal text-muted sm:text-[16px] sm:leading-[1.7] sm:tracking-[0.005em]">
+							{t('home.faq.copy')}
 						</p>
 
 						{/* CTA Button */}
 						<div className="flex flex-wrap items-center gap-4">
 							<a
 								href="/"
-								className="group/btn relative inline-flex min-h-[50px] items-center justify-center gap-2.5 overflow-hidden rounded-full bg-primary px-8 text-[13px] font-black uppercase tracking-[0.04em] text-white shadow-[0_10px_28px_rgba(0,73,164,0.24)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(0,73,164,0.34)]"
+								className="group/btn relative inline-flex min-h-[46px] w-full items-center justify-center gap-2.5 overflow-hidden rounded-full bg-primary px-6 text-[12px] font-black uppercase tracking-[0.04em] text-white shadow-[0_10px_28px_rgba(0,73,164,0.24)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_16px_40px_rgba(0,73,164,0.34)] sm:min-h-[50px] sm:w-auto sm:px-8 sm:text-[13px]"
 							>
 								{/* Hover shine effect */}
 								<span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/14 to-transparent transition-transform duration-700 group-hover/btn:translate-x-full" />
-								<span className="relative">Únete a nosotros</span>
+								<span className="relative">{t('home.faq.cta')}</span>
 								{/* Heroicons arrow-right (outline, 20px) */}
 								<svg
 									aria-hidden="true"
@@ -255,9 +251,9 @@ export default function FAQSection() {
 									</svg>
 								</span>
 								<p className="text-[13px] font-bold leading-tight text-body">
-									Proceso de afiliación
+									{t('home.faq.trustA1')}
 									<br />
-									<span className="font-extrabold text-primary-dark">100% Transparente</span>
+									<span className="font-extrabold text-primary-dark">{t('home.faq.trustA2')}</span>
 								</p>
 							</div>
 
@@ -269,9 +265,9 @@ export default function FAQSection() {
 									</svg>
 								</span>
 								<p className="text-[13px] font-bold leading-tight text-body">
-									Respuesta en
+									{t('home.faq.trustB1')}
 									<br />
-									<span className="font-extrabold text-primary-dark">menos de 24 horas</span>
+									<span className="font-extrabold text-primary-dark">{t('home.faq.trustB2')}</span>
 								</p>
 							</div>
 						</div>
@@ -290,6 +286,7 @@ export default function FAQSection() {
 								isOpen={openIndex === index}
 								onToggle={() => handleToggle(index)}
 								shouldReduceMotion={shouldReduceMotion}
+								t={t}
 							/>
 						))}
 					</motion.div>

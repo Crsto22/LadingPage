@@ -1,6 +1,15 @@
 ---
 import '../styles/global.css';
 import IntroLoader from '../components/IntroLoader.astro';
+import {
+	DEFAULT_LANGUAGE,
+	LANGUAGE_CHANGE_EVENT,
+	LANGUAGE_STORAGE_KEY,
+	languageOptions,
+	translations,
+} from '../i18n/translations.js';
+
+const { title = 'Integridad Democr\u00e1tica' } = Astro.props;
 ---
 
 <!doctype html>
@@ -10,11 +19,139 @@ import IntroLoader from '../components/IntroLoader.astro';
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Landing Page</title>
+		<title>{title}</title>
 	</head>
 	<body>
 		<IntroLoader />
 		<slot />
+		<script define:vars={{ DEFAULT_LANGUAGE, LANGUAGE_CHANGE_EVENT, LANGUAGE_STORAGE_KEY, languageOptions, translations }}>
+			(() => {
+				const dictionary = translations;
+				const defaultLanguage = DEFAULT_LANGUAGE;
+				const languageCodes = languageOptions.map((item) => item.code);
+				const languageMeta = Object.fromEntries(languageOptions.map((item) => [item.code, item]));
+				const attrMap = {
+					'aria-label': 'data-i18n-aria-label',
+					alt: 'data-i18n-alt',
+					placeholder: 'data-i18n-placeholder',
+					title: 'data-i18n-title',
+					value: 'data-i18n-value',
+				};
+				let currentLanguage = defaultLanguage;
+				let isApplying = false;
+
+				const resolveLanguage = (language) => (languageCodes.includes(language) ? language : defaultLanguage);
+
+				const readStoredLanguage = () => {
+					try {
+						return resolveLanguage(window.localStorage.getItem(LANGUAGE_STORAGE_KEY));
+					} catch {
+						return defaultLanguage;
+					}
+				};
+
+				const writeStoredLanguage = (language) => {
+					try {
+						window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
+					} catch {
+						// localStorage can be unavailable in private or restricted contexts.
+					}
+				};
+
+				const translate = (language, key, fallback = '') =>
+					dictionary[language]?.[key] ?? dictionary[defaultLanguage]?.[key] ?? fallback;
+
+				const format = (template, element) =>
+					String(template).replace(/\{([a-zA-Z0-9_-]+)\}/g, (_, token) => {
+						const attrValue = element.getAttribute(`data-i18n-${token}`);
+						return attrValue ?? '';
+					});
+
+				const applyElement = (element, language) => {
+					const textKey = element.getAttribute('data-i18n');
+					if (textKey) element.textContent = format(translate(language, textKey, element.textContent), element);
+
+					const htmlKey = element.getAttribute('data-i18n-html');
+					if (htmlKey) element.innerHTML = format(translate(language, htmlKey, element.innerHTML), element);
+
+					Object.entries(attrMap).forEach(([attribute, dataAttribute]) => {
+						const key = element.getAttribute(dataAttribute);
+						if (key) element.setAttribute(attribute, format(translate(language, key, element.getAttribute(attribute) ?? ''), element));
+					});
+				};
+
+				const applyScope = (scope, language) => {
+					const selector = [
+						'[data-i18n]',
+						'[data-i18n-html]',
+						'[data-i18n-aria-label]',
+						'[data-i18n-alt]',
+						'[data-i18n-placeholder]',
+						'[data-i18n-title]',
+						'[data-i18n-value]',
+					].join(',');
+					const elements = [];
+
+					if (scope.matches?.(selector)) elements.push(scope);
+					scope.querySelectorAll?.(selector).forEach((element) => elements.push(element));
+					elements.forEach((element) => applyElement(element, language));
+				};
+
+				const applyTranslations = (nextLanguage = readStoredLanguage()) => {
+					const language = resolveLanguage(nextLanguage);
+					currentLanguage = language;
+					isApplying = true;
+					document.documentElement.lang = languageMeta[language]?.htmlLang ?? language;
+					applyScope(document, language);
+					document.querySelectorAll('[data-language-option]').forEach((option) => {
+						const isActive = option.getAttribute('data-language-option') === language;
+						option.setAttribute('aria-current', isActive ? 'true' : 'false');
+					});
+					isApplying = false;
+				};
+
+				const setLanguage = (language, shouldDispatch = true) => {
+					const resolved = resolveLanguage(language);
+					writeStoredLanguage(resolved);
+					applyTranslations(resolved);
+					if (shouldDispatch) {
+						window.dispatchEvent(new CustomEvent(LANGUAGE_CHANGE_EVENT, { detail: { language: resolved } }));
+					}
+				};
+
+				window.IntegridadI18n = {
+					t: (key, fallback = '') => translate(currentLanguage, key, fallback),
+					getLanguage: () => currentLanguage,
+					setLanguage,
+					applyTranslations,
+				};
+
+				document.addEventListener('click', (event) => {
+					const trigger = event.target.closest?.('[data-language-option]');
+					if (trigger) setLanguage(trigger.getAttribute('data-language-option'));
+				});
+
+				window.addEventListener(LANGUAGE_CHANGE_EVENT, (event) => {
+					if (event.detail?.language) applyTranslations(event.detail.language);
+				});
+
+				window.addEventListener('storage', (event) => {
+					if (event.key === LANGUAGE_STORAGE_KEY) applyTranslations(readStoredLanguage());
+				});
+
+				const observer = new MutationObserver((mutations) => {
+					if (isApplying) return;
+					mutations.forEach((mutation) => {
+						mutation.addedNodes.forEach((node) => {
+							if (node.nodeType === Node.ELEMENT_NODE) applyScope(node, currentLanguage);
+						});
+					});
+				});
+
+				applyTranslations(readStoredLanguage());
+				observer.observe(document.body, { childList: true, subtree: true });
+			})();
+		</script>
 		<script is:inline>
 			(() => {
 				const root = document.documentElement;

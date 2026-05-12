@@ -8,14 +8,14 @@ import ImageGallery from "../components/nosotros/ImageGallery.jsx";
 ---
 
 <Layout title="Nosotros - Integridad Democrática">
-	<Navbar />
+	<Navbar client:load />
 
 	<!-- Banner Nosotros -->
 	<section class="nosotros-banner" id="nosotros-banner">
 		<!-- La imagen de fondo se coloca en el CSS o inline si se desea -->
 		<div class="nosotros-banner__overlay"></div>
 		<div class="nosotros-banner__content">
-			<h1 class="nosotros-banner__title">Nosotros</h1>
+			<h1 class="nosotros-banner__title" data-i18n="about.banner">Nosotros</h1>
 		</div>
 	</section>
 

@@ -5,6 +5,7 @@ import quienesSomosImg from '../../img/nosotros-quienes-somos.jpg';
 import iconIntegridad from '../../img/icon-integridad.png';
 import iconIgualdad from '../../img/icon-igualdadyjusticia.png';
 import iconDemocracia from '../../img/icon-democracia.png';
+import { useLanguage } from '../../i18n/useLanguage.js';
 
 const fadeUp = {
     hidden: { opacity: 0, y: 40 },
@@ -17,6 +18,7 @@ const staggerContainer = {
 };
 
 export default function NosotrosContent() {
+    const { t } = useLanguage();
     const [selectedImage, setSelectedImage] = useState(null);
     const getImgSrc = (img) => typeof img === 'string' ? img : img.src;
 
@@ -34,15 +36,15 @@ export default function NosotrosContent() {
                         viewport={{ once: true, amount: 0.3 }}
                     >
                         <h2 className="text-[clamp(36px,5vw,64px)] font-black leading-[1.1] text-primary mb-6">
-                            Quiénes <span className="text-accent">Somos</span>
+                            {t('about.headingA')} <span className="text-accent">{t('about.headingB')}</span>
                         </h2>
                         <div className="border-l-4 border-accent pl-6 mb-8">
                             <p className="text-[clamp(18px,1.5vw,24px)] font-bold leading-[1.4] text-primary-dark">
-                                Integridad Democrática es una organización política formada por ciudadanos comprometidos con el servicio al país, que entienden la política como un medio para alcanzar el Bien Común.
+                                {t('about.intro')}
                             </p>
                         </div>
                         <p className="text-[clamp(16px,1.1vw,19px)] font-medium leading-[1.6] text-muted">
-                            Nuestra visión se inspira en un enfoque humanista y se sustenta en valores y principios firmes, que ponen en el centro a la persona, la familia y la sociedad.
+                            {t('about.copy')}
                         </p>
                     </motion.div>
 
@@ -61,7 +63,7 @@ export default function NosotrosContent() {
                         </div>
                         <img
                             src={getImgSrc(quienesSomosImg)}
-                            alt="Equipo Integridad Democrática"
+                            alt={t('about.imageAlt')}
                             className="w-full h-[clamp(320px,35vw,550px)] object-cover transform group-hover:scale-105 transition-transform duration-700 ease-out"
                             onError={(e) => {
                                 e.target.src = "https://images.unsplash.com/photo-1529156069898-49953eb1b5ae?q=80&w=1470&auto=format&fit=crop";
@@ -84,10 +86,10 @@ export default function NosotrosContent() {
                         viewport={{ once: true, amount: 0.3 }}
                     >
                         <h2 className="text-[clamp(36px,5vw,64px)] font-black leading-[1.1] text-[#f7ffff] mb-6">
-                            Nuestros <span className="text-accent">Valores</span>
+                            {t('about.values.headingA')} <span className="text-accent">{t('about.values.headingB')}</span>
                         </h2>
                         <p className="text-[clamp(18px,1.4vw,22px)] font-semibold leading-[1.5] text-white/90">
-                            Aspiramos a construir un país justo, libre, solidario y ganador, el Perú que todos queremos y merecemos.
+                            {t('about.values.copy')}
                         </p>
                     </motion.div>
 
@@ -100,22 +102,22 @@ export default function NosotrosContent() {
                     >
                         {[
                             {
-                                title: "Integridad",
+                                titleKey: "about.value.integrity.title",
                                 icon: iconIntegridad,
                                 fallbackIcon: "🛡️",
-                                desc: "Para garantizar un ejercicio transparente y honesto de la política, combatiendo la corrupción."
+                                descKey: "about.value.integrity.desc"
                             },
                             {
-                                title: "Igualdad y Justicia",
+                                titleKey: "about.value.justice.title",
                                 icon: iconIgualdad,
                                 fallbackIcon: "⚖️",
-                                desc: "Para asegurar que todos los peruanos tengan las mismas oportunidades y acceso a sus derechos."
+                                descKey: "about.value.justice.desc"
                             },
                             {
-                                title: "Democracia",
+                                titleKey: "about.value.democracy.title",
                                 icon: iconDemocracia,
                                 fallbackIcon: "🏛️",
-                                desc: "Para construir una sociedad libre, participativa y representativa, donde tu voz importa."
+                                descKey: "about.value.democracy.desc"
                             }
                         ].map((val, idx) => (
                             <motion.div
@@ -129,7 +131,7 @@ export default function NosotrosContent() {
                                 <div className="w-[120px] h-[120px] bg-[#002660] rounded-full flex items-center justify-center mb-6 border border-accent/40 shadow-[0_0_24px_rgba(0,16,54,0.4)] relative z-10 group-hover:scale-110 transition-transform duration-300">
                                     <img
                                         src={getImgSrc(val.icon)}
-                                        alt={val.title}
+                                        alt={t(val.titleKey)}
                                         className="w-[70px] h-[70px] object-contain"
                                         onError={(e) => {
                                             e.target.style.display = 'none';
@@ -139,10 +141,10 @@ export default function NosotrosContent() {
                                     <span className="text-[40px] hidden">{val.fallbackIcon}</span>
                                 </div>
                                 <h3 className="text-[clamp(24px,2.2vw,32px)] font-bold text-accent mb-4 relative z-10">
-                                    {val.title}
+                                    {t(val.titleKey)}
                                 </h3>
                                 <p className="text-[clamp(16px,1.1vw,18px)] leading-[1.6] text-white/85 relative z-10 font-medium">
-                                    {val.desc}
+                                    {t(val.descKey)}
                                 </p>
                             </motion.div>
                         ))}
