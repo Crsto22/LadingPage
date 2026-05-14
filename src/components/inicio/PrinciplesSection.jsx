@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { motion, useReducedMotion, AnimatePresence } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import fondo from '../../img/fondo1.png';
 import principlesImage from '../../img/principiosimg.webp';
 import { useLanguage } from '../../i18n/useLanguage.js';
@@ -80,7 +79,6 @@ const cardVariants = {
 export default function PrinciplesSection() {
 	const { t } = useLanguage();
 	const shouldReduceMotion = useReducedMotion();
-	const [isModalOpen, setIsModalOpen] = useState(false);
 	const backgroundSrc = typeof fondo === 'string' ? fondo : fondo.src;
 	const imageSrc = typeof principlesImage === 'string' ? principlesImage : principlesImage.src;
 
@@ -110,11 +108,10 @@ export default function PrinciplesSection() {
 
 				<div className="mt-[clamp(28px,5vw,72px)] grid gap-4 md:grid-cols-2 lg:grid-cols-[minmax(190px,0.82fr)_minmax(260px,1.18fr)_minmax(260px,1.18fr)_minmax(190px,0.82fr)] lg:grid-rows-[170px_170px_170px] lg:items-stretch xl:grid-cols-[minmax(214px,0.9fr)_minmax(290px,1.2fr)_minmax(290px,1.2fr)_minmax(214px,0.9fr)] xl:grid-rows-[180px_180px_180px] xl:gap-6">
 					<motion.div
-						className="group relative order-first cursor-pointer overflow-hidden rounded-[30px] border border-white/18 bg-white/10 shadow-[0_34px_90px_rgba(0,12,36,0.42)] backdrop-blur max-sm:rounded-2xl md:col-span-2 lg:col-start-2 lg:col-end-4 lg:row-start-1 lg:row-end-3"
+						className="group relative order-first overflow-hidden rounded-[30px] border border-white/18 bg-white/10 shadow-[0_34px_90px_rgba(0,12,36,0.42)] backdrop-blur max-sm:rounded-2xl md:col-span-2 lg:col-start-2 lg:col-end-4 lg:row-start-1 lg:row-end-3"
 						variants={fadeUp}
 						whileHover={shouldReduceMotion ? undefined : { y: -8, scale: 1.01 }}
 						transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-						onClick={() => setIsModalOpen(true)}
 					>
 						<div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.16),transparent_38%,rgba(0,19,52,0.62))]" />
 						<img
@@ -123,11 +120,6 @@ export default function PrinciplesSection() {
 							alt={t('home.principles.imageAlt')}
 							loading="lazy"
 						/>
-						<div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-10 pointer-events-none">
-							<div className="bg-white/20 backdrop-blur-md rounded-full p-4 border border-white/30 transform scale-50 opacity-0 group-hover:scale-100 group-hover:opacity-100 transition-all duration-300">
-								<svg className="w-10 h-10 text-white drop-shadow-md" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
-							</div>
-						</div>
 						<div className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-4 p-[clamp(16px,3vw,34px)] text-white">
 							<div>
 								<p className="text-[10px] font-black uppercase tracking-[0.18em] text-[#f0c66b] sm:text-[11px] sm:tracking-[0.22em]">
@@ -172,37 +164,6 @@ export default function PrinciplesSection() {
 					))}
 				</div>
 			</motion.div>
-
-			{/* Modal Lightbox */}
-			<AnimatePresence>
-				{isModalOpen && (
-					<motion.div 
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						exit={{ opacity: 0 }}
-						transition={{ duration: 0.3 }}
-						onClick={() => setIsModalOpen(false)}
-						className="fixed inset-0 z-[100000] flex items-center justify-center bg-[#001036]/90 backdrop-blur-lg p-4 md:p-10"
-					>
-						<button 
-							className="absolute top-6 right-6 md:top-10 md:right-10 w-12 h-12 flex items-center justify-center bg-white/10 hover:bg-accent hover:text-white text-white/80 rounded-full transition-all duration-300 z-10"
-							onClick={() => setIsModalOpen(false)}
-						>
-							<svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M6 18L18 6M6 6l12 12" /></svg>
-						</button>
-						
-						<motion.img 
-							src={imageSrc} 
-							initial={{ scale: 0.9, opacity: 0, y: 20 }}
-							animate={{ scale: 1, opacity: 1, y: 0 }}
-							exit={{ scale: 0.9, opacity: 0, y: 20 }}
-							transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-							className="max-w-full max-h-full object-contain rounded-xl shadow-[0_0_60px_rgba(0,0,0,0.5)]"
-							onClick={(e) => e.stopPropagation()}
-						/>
-					</motion.div>
-				)}
-			</AnimatePresence>
 		</section>
 	);
 }

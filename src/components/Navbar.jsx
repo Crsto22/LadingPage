@@ -6,7 +6,6 @@ import {
 	FaLinkedinIn,
 	FaStore,
 	FaTiktok,
-	FaWhatsapp,
 	FaXmark,
 	FaXTwitter,
 	FaYoutube,
@@ -32,13 +31,12 @@ const navItems = [
 ];
 
 const socialLinks = [
-	{ label: 'Facebook', Icon: FaFacebookF },
-	{ label: 'YouTube', Icon: FaYoutube },
-	{ label: 'TikTok', Icon: FaTiktok },
-	{ label: 'X', Icon: FaXTwitter },
-	{ label: 'WhatsApp', Icon: FaWhatsapp },
-	{ label: 'Instagram', Icon: FaInstagram },
-	{ label: 'LinkedIn', Icon: FaLinkedinIn },
+	{ label: 'Facebook', href: 'https://www.facebook.com/WolfgangGrozo', Icon: FaFacebookF },
+	{ label: 'YouTube', href: 'https://www.youtube.com/@integridademocratica', Icon: FaYoutube },
+	{ label: 'TikTok', href: 'https://www.tiktok.com/@wolfgang_grozo', Icon: FaTiktok },
+	{ label: 'X', href: 'https://x.com/WolfgangGrozo', Icon: FaXTwitter },
+	{ label: 'Instagram', href: 'https://www.instagram.com/wolfgang_grozo/', Icon: FaInstagram },
+	{ label: 'LinkedIn', href: 'https://pe.linkedin.com/in/wolfgang-grozo-costa-150a74290', Icon: FaLinkedinIn },
 ];
 
 const flagByLanguage = {
@@ -243,12 +241,14 @@ export default function Navbar() {
 
 						<div className="flex shrink-0 items-center gap-2.5">
 							<LanguagePicker />
-							{socialLinks.map(({ Icon: SocialIcon, label }) => (
+							{socialLinks.map(({ Icon: SocialIcon, href, label }) => (
 								<a
 									className="flex size-9 items-center justify-center rounded-full border border-primary/10 bg-primary/5 text-primary shadow-[0_6px_16px_rgba(0,73,164,0.08)] transition hover:-translate-y-0.5 hover:bg-primary hover:text-surface hover:shadow-[0_10px_20px_rgba(0,73,164,0.22)]"
-									href="/"
+									href={href}
 									aria-label={label}
 									key={label}
+									target="_blank"
+									rel="noreferrer"
 								>
 									<SocialIcon aria-hidden="true" className="size-[18px]" />
 								</a>
@@ -426,12 +426,14 @@ export default function Navbar() {
 					</div>
 
 					<div className="mt-4 flex flex-wrap gap-2">
-						{socialLinks.map(({ Icon: SocialIcon, label }) => (
+						{socialLinks.map(({ Icon: SocialIcon, href, label }) => (
 							<a
 								className="flex size-9 items-center justify-center rounded-full border border-primary/10 bg-primary/5 text-primary shadow-[0_6px_16px_rgba(0,73,164,0.08)] transition hover:-translate-y-0.5 hover:bg-primary hover:text-surface hover:shadow-[0_10px_20px_rgba(0,73,164,0.22)]"
-								href="/"
+								href={href}
 								aria-label={label}
 								key={label}
+								target="_blank"
+								rel="noreferrer"
 							>
 								<SocialIcon aria-hidden="true" className="size-[18px]" />
 							</a>
